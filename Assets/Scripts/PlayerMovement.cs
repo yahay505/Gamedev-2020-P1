@@ -58,7 +58,18 @@ public class PlayerMovement : MonoBehaviour
             
             Debug.Log(IsGrounded);
 
-            
+        //Flip Character
+        Vector2 characterScale = transform.localScale;
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            characterScale.x = -2.6362f;
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            characterScale.x = 2.6362f;
+        }
+        transform.localScale = characterScale;
+
         if (Input.GetKeyDown(KeyCode.Space)&&IsGrounded)
         {
             rb2d.AddForce(new Vector2(0,Yspeed-rb2d.velocity.y),ForceMode2D.Impulse);
@@ -79,4 +90,5 @@ public class PlayerMovement : MonoBehaviour
             rb2d.gravityScale = 9;
         }
     }
+
 }
