@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    // Start is called before the first frame update
+    public Animator playerAnimator;
+    public float speed;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -14,15 +15,16 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Animator speed
+        playerAnimator.SetFloat("speed", Mathf.Abs(rb2d.velocity.x));
+
         if (rb2d.velocity.x<0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
-
         if (rb2d.velocity.x>0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
-
+            GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 }
