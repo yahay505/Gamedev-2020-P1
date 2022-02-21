@@ -6,6 +6,8 @@ public class ProjectileHitable : MonoBehaviour
 {
     public void Hit()
     {
+        // animasyon
         
+        Destroy(gameObject);
     }
 }
